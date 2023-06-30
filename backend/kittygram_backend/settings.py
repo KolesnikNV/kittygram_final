@@ -3,16 +3,16 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DEBAG = True
+ALLOWED_HOSTS = [
+    "51.250.106.197",
+    "127.0.0.1",
+    "kittygramapi.dynnamn.ru",
+    "backend",
+]
 SECRET_KEY = (
     "django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$"
 )
-
-DEBUG = os.getenv("DEBUG")
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS")
-if ALLOWED_HOSTS:
-    ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS.split(",")]
-else:
-    ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
