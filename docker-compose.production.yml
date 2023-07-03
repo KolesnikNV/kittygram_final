@@ -16,8 +16,8 @@ services:
     image: nkoles/kittygram_backend
     env_file: .env
     volumes:
-      - static:/static/
-      - media:/app/media/
+      - static:/backend_static
+      - media:/media
     depends_on:
     - db
 
@@ -27,6 +27,7 @@ services:
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
+      
 
   gateway:
     image: nkoles/kittygram_gateway
@@ -35,6 +36,6 @@ services:
       - 9000:80
     volumes:
       - static:/static
-      - media:/app/media/
+      - media:/media
     depends_on:
       - backend
