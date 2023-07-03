@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,8 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG").lower() == "true"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS")
-print(ALLOWED_HOSTS)
-print(type(ALLOWED_HOSTS))
+
 if ALLOWED_HOSTS:
     ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS.split(",")]
 else:
