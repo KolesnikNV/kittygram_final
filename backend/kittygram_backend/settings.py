@@ -1,12 +1,16 @@
-import ast
 import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-DEBUG = os.getenv("DEBUG").lower() == "true"
-ALLOWED_HOSTS = ast.literal_eval(os.getenv("ALLOWED_HOSTS"))
 SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG").lower() == "true"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS")
+
+if ALLOWED_HOSTS:
+    ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS.split(",")]
+else:
+    ALLOWED_HOSTS = []
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
